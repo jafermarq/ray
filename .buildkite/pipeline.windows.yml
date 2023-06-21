@@ -1,3 +1,5 @@
+#ci:group=Windows
+
 prelude_commands: &prelude_commands |-
     set -ex
     mkdir ray
