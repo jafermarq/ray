@@ -1,5 +1,3 @@
-#ci:group=x86_64 wheels and containers
-
 - label: ":book: Lint"
   commands:
     - export LINT=1

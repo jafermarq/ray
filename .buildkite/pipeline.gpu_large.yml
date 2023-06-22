@@ -1,4 +1,4 @@
-##ci:group=Large GPU tests
+#ci:group=Large GPU tests
 
 - label: ":tv: :steam_locomotive: Train GPU tests "
   conditions: ["NO_WHEELS_REQUIRED", "RAY_CI_TRAIN_AFFECTED"]
