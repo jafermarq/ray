@@ -15,7 +15,6 @@
 #include "ray/gcs/gcs_server/gcs_server.h"
 
 #include <fstream>
-#include <future>
 
 #include "ray/common/asio/asio_util.h"
 #include "ray/common/asio/instrumented_io_context.h"
@@ -84,7 +83,8 @@ GcsServer::GcsServer(const ray::gcs::GcsServerConfig &config,
     RAY_LOG(FATAL) << "Unexpected storage type: " << storage_type_;
   }
 
-  // Init KV Manager
+  // Init KV Manager. This needs to be initialized first here so that
+  // it can be used to retrieve the cluster ID.
   InitKVManager();
   CacheAndSetClusterId();
 
@@ -293,9 +293,10 @@ void GcsServer::Stop() {
 
 void GcsServer::InitGcsNodeManager(const GcsInitData &gcs_init_data) {
   RAY_CHECK(gcs_table_storage_ && gcs_publisher_);
-  auto cluster_id = rpc_server_.GetClusterId();
-  gcs_node_manager_ = std::make_shared<GcsNodeManager>(
-      gcs_publisher_, gcs_table_storage_, raylet_client_pool_, cluster_id);
+  gcs_node_manager_ = std::make_shared<GcsNodeManager>(gcs_publisher_,
+                                                       gcs_table_storage_,
+                                                       raylet_client_pool_,
+                                                       rpc_server_.GetClusterId());
   // Initialize by gcs tables data.
   gcs_node_manager_->Initialize(gcs_init_data);
   // Register service.
