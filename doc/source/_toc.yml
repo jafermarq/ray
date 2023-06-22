@@ -256,6 +256,7 @@ parts:
         sections:
           - file: serve/getting_started
           - file: serve/key-concepts
+          - file: serve/develop-and-deploy
           - file: serve/model_composition
           - file: serve/deploy-many-models/index
             sections:

@@ -30,6 +30,20 @@ handle = serve.run(my_first_deployment)
 print(ray.get(handle.remote())) # "Hello world!"
 ```
 
+(serve-key-concepts-application)=
+
+## Application
+
+An application is the unit of upgrade in a Ray Serve cluster. An application consists of one or more deployments. One of these deployments is considered the “ingress” deployment, which is where all inbound traffic is handled.
+
+Applications can be called via HTTP at the specified route_prefix or in Python by retrieving a handle to the application by name.
+
+(serve-key-concepts-cluster)=
+
+## Cluster
+
+A Serve cluster consists of all the Serve applications running on a single Ray cluster. A Serve application can talk to any other application running on the same cluster.
+
 (serve-key-concepts-query-deployment)=
 
 ## ServeHandle (composing deployments)
