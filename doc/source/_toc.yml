@@ -263,6 +263,7 @@ parts:
             - file: serve/deploy-many-models/multi-app
             - file: serve/deploy-many-models/model-multiplexing
           - file: serve/http-guide
+          - file: serve/configure-serve-deployment
           - file: serve/production-guide/index
             title: Production Guide
             sections:

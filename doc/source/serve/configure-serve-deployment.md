@@ -1,6 +1,6 @@
 (serve-configure-deployment)=
 
-# Configuring a Ray Serve deployment
+# Configure a Ray Serve deployment
 
 These are all the properties available on a Ray Serve deployment. This is also available in the [API reference](../serve/api/doc/ray.serve.deployment_decorator.rst)
 
