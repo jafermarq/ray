@@ -9,7 +9,8 @@ produce .whl files owned by root.
 Inside the root directory (i.e., one level above this python directory), run
 
 ```
-docker run -e TRAVIS_COMMIT=<commit_number_to_use> --rm -w /ray -v `pwd`:/ray -ti quay.io/pypa/manylinux2014_x86_64  /ray/python/build-wheel-manylinux2014.sh
+# the tag `2022-05-14-b55b680` was the one around the time Ray 1.11.1 was released
+docker run -e TRAVIS_COMMIT=<commit_number_to_use> --rm -w /ray -v `pwd`:/ray -ti quay.io/pypa/manylinux2014_x86_64:2022-05-14-b55b680  /ray/python/build-wheel-manylinux2014.sh
 ```
 
 The wheel files will be placed in the .whl directory.
